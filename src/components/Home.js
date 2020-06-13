@@ -1,17 +1,42 @@
-import React from "react";
+import React, { Component } from "react";
+import axios from 'axios'
+class Home extends Component{ 
 
-const Home = () => {
+  state={
+    posts:[]
+  }
+  componentDidMount()
+  {
+    axios.get('https://jsonplaceholder.typicode.com/posts')
+      .then(res =>{
+        console.log(res);
+        this.setState(
+          {
+            posts:res.data.slice(0,10)
+          }
+        )
+      })
+  }
+  render(){
+    const {posts}=this.state
+    const postList=posts.length? (
+        posts.map(post =>{
+          return (
+            <div className="post card" key={post.id}> 
+              <div className="card-content">
+                <span className="card-title">{post.title} </span>
+                <p>{post.body}</p>
+              </div>
+            </div>
+          )
+        })
+    ):(
+    <div className='center'>No post yet</div>)
   return (
     <div className="container">
       <h4 className="center"> Home</h4>
-      <p>
-        Prow gally topsail hornswaggle lanyard belaying pin chase guns gun main
-        sheet sloop. Galleon line gibbet capstan knave pressgang coffer
-        landlubber or just lubber topgallant mizzenmast. Bilge chase guns Yellow
-        Jack lugger log six pounders measured fer yer chains Blimey yardarm
-        Corsair.{" "}
-      </p>
+      {postList}
     </div>
-  );
+  )}
 };
 export default Home

@@ -1,9 +1,9 @@
 import React from "react";
-import Rainbow from '../hoc/Rainbow'
-const About = () => {
+
+const Contact = () => {
   return (
     <div className="container">
-      <h4 className="center"> About</h4>
+      <h4 className="center"> Contact</h4>
       <p>
         Prow gally topsail hornswaggle lanyard belaying pin chase guns gun main
         sheet sloop. Galleon line gibbet capstan knave pressgang coffer
@@ -14,4 +14,4 @@ const About = () => {
     </div>
   );
 };
-export default Rainbow(About)
+export default Contact
